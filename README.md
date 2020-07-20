@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 # iOS Screenshots of To-Do List Application
 
-<img src="screenshots/home.png" height="300em" /> <img src="screenshots/addnew.png" height="300em" /> <img src="screenshots/seletdate.png" height="300em" /> <img src="screenshots/succesfully.png" height="300em" /> <img src="screenshots/edittask.png" height="300em" />
+<img src="screenshots/home.png" height="300em" /> <img src="screenshots/addnew.png" height="300em" /> <img src="screenshots/selectdate.png" height="300em" /> <img src="screenshots/successfully.png" height="300em" /> <img src="screenshots/edittask.png" height="300em" />
 
 ## Features
 * Create New Tasks from the Action button.
