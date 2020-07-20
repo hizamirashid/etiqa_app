@@ -114,51 +114,41 @@ class task_state extends State<new_task> {
             },
           ), //TimeListTile
 
-          Padding(
-            padding: EdgeInsets.all(_minPadding),
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0)),
-              padding: EdgeInsets.all(_minPadding / 2),
-              color: Colors.black,
-              textColor: Colors.white,
-              elevation: 5.0,
-              child: Text(
-                "Create Now",
-                textAlign: TextAlign.center,
-                textScaleFactor: 1.2,
-              ),
-              onPressed: () {
-                setState(() {
-                  _save();
-                });
-              },
-            ), //RaisedButton
-          ), //Padding
+          RaisedButton(
+            padding: EdgeInsets.all(_minPadding / 2),
+            color: Colors.black,
+            textColor: Colors.white,
+            elevation: 5.0,
+            child: Text(
+              "Create Now",
+              textAlign: TextAlign.center,
+              textScaleFactor: 1.2,
+            ),
+            onPressed: () {
+              setState(() {
+                _save();
+              });
+            },
+          ),
 
-          Padding(
-            padding: EdgeInsets.all(_minPadding),
-            child: _isEditable()
-                ? RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0)),
-                    padding: EdgeInsets.all(_minPadding / 2),
-                    color: Theme.of(context).primaryColor,
-                    textColor: Colors.white,
-                    elevation: 5.0,
-                    child: Text(
-                      "Delete",
-                      textAlign: TextAlign.center,
-                      textScaleFactor: 1.2,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _delete();
-                      });
-                    },
-                  ) //RaisedButton
-                : Container(),
-          ) //Padding
+          _isEditable()
+              ? RaisedButton(
+                  padding: EdgeInsets.all(_minPadding / 2),
+                  color: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
+                  elevation: 5.0,
+                  child: Text(
+                    "Delete",
+                    textAlign: TextAlign.center,
+                    textScaleFactor: 1.2,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _delete();
+                    });
+                  },
+                ) //RaisedButton
+              : Container(), //Padding
         ]) //ListView
 
         ); //Scaffold

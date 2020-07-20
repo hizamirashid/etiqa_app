@@ -89,65 +89,69 @@ class MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: ListView(
-          children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: FutureBuilder(
-                future: databaseHelper.getInCompleteTaskList(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.data == null) {
-                    return Text("Loading");
-                  } else {
-                    if (snapshot.data.length < 1) {
-                      return Center(
-                        child: Text(
-                          'No Tasks Added',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      );
-                    }
-                    return ListView.builder(
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (BuildContext context, int position) {
-                          return new GestureDetector(
-                              onTap: () {
-                                if (snapshot.data[position].status !=
-                                    "Task Completed")
-                                  navigateToTask(snapshot.data[position],
-                                      "Edit Task", this);
-                              },
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0)),
-                                margin: EdgeInsets.all(10.0),
-                                elevation: 3.0,
-                                child: CustomWidget(
-                                  title: snapshot.data[position].task,
-                                  sub1: snapshot.data[position].date,
-                                  sub2: snapshot.data[position].date_end,
-                                  status: snapshot.data[position].status,
-                                  delete: snapshot.data[position].status ==
-                                          "Task Completed"
-                                      ? IconButton(
-                                          icon: Icon(Icons.delete),
-                                          onPressed: null,
-                                        )
-                                      : Container(),
-                                  trailing: Icon(
-                                    Icons.edit,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 28,
+        child: Container(
+          color: Colors.grey[300],
+          child: ListView(
+            children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: FutureBuilder(
+                  future: databaseHelper.getInCompleteTaskList(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.data == null) {
+                      return Text("Loading");
+                    } else {
+                      if (snapshot.data.length < 1) {
+                        return Center(
+                          child: Text(
+                            'No Tasks Added',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        );
+                      }
+                      return ListView.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (BuildContext context, int position) {
+                            return new GestureDetector(
+                                onTap: () {
+                                  if (snapshot.data[position].status !=
+                                      "Task Completed")
+                                    navigateToTask(snapshot.data[position],
+                                        "Edit Task", this);
+                                },
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
+                                  margin: EdgeInsets.all(10.0),
+                                  elevation: 3.0,
+                                  child: CustomWidget(
+                                    title: snapshot.data[position].task,
+                                    sub1: snapshot.data[position].date,
+                                    sub2: snapshot.data[position].date_end,
+                                    status: snapshot.data[position].status,
+                                    delete: snapshot.data[position].status ==
+                                            "Task Completed"
+                                        ? IconButton(
+                                            icon: Icon(Icons.delete),
+                                            onPressed: null,
+                                          )
+                                        : Container(),
+                                    trailing: Icon(
+                                      Icons.edit,
+                                      color: Theme.of(context).primaryColor,
+                                      size: 28,
+                                    ),
                                   ),
-                                ),
-                              ) //Card
-                              );
-                        });
-                  }
-                },
-              ),
-            )
-          ],
+                                ) //Card
+                                );
+                          });
+                    }
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
       floatingActionButton: Padding(
